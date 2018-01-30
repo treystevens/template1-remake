@@ -1,2 +1,2 @@
 # template1-remake
-Practicing HTML, CSS, &amp; JS
+Practicing HTML, CSS, JavaScript, & Git
