@@ -3,22 +3,21 @@
 
 <head>
     <meta charset="utf-8" />
-    <link href="styles/index.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
     <link href="styles/base.css" rel="stylesheet">
     <link href="styles/layout.css" rel="stylesheet">
-    <link href="styles/modules/destcard.css" rel="stylesheet">
     <link href="styles/animate.css" rel="stylesheet">
     <script src="scripts/app.js"></script>
     <title>Traveler</title>
 </head>
 
 <body>
-    <header class="flex-center display__image">
+    <header class="flex-center  display__image">
         <div class="header__bleed">
             <section class="head__one">
                 <h1 class="logo__head">
-                    <a href="index.html" class="logo">Traveler
-                        <span class="logo__period">.</span>
+                    <a href="index.html" class="logo">Traveler<span class="logo__period">.</span>
                     </a>
                 </h1>
                 <nav class="nav">
@@ -53,10 +52,10 @@
     </header>
 
     <section class="destinations">
-        <div class="container  js-imgView" id="testing">
-            <div class="dest__text">
-                <h3 class="dest__header">Most Popular Destinations</h3>
-                <p class="description__para">Come check out some of the most popular destinations.</p>
+        <div class="container  js-imgView  js-modalImg  mb-close-box">
+            <div class="dest-header__info">
+                <h2 class="sectioned__header">Most Popular Destinations</h2>
+                <p class="sectioned__info">Come check out some of the most popular destinations.</p>
             </div>
             <div class="flex-card   js-imageNav">
                 <article class="dest-card dest-card--hv">
@@ -65,7 +64,7 @@
                     </div>
                     <h6 class="dest-card__head">New York, USA</h6>
                     <p class="dest-card__para">Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                    <button class="button dest-card__schedule">Schedule a Trip</button>
+                    <button class="button dest-card__schedulebtn">Schedule a Trip</button>
                 </article>
 
                 <article class="dest-card dest-card--hv">
@@ -74,7 +73,7 @@
                     </div>
                     <h6 class="dest-card__head">Seoul, South Korea</h6>
                     <p class="dest-card__para">Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                    <button class="button dest-card__schedule">Schedule a Trip</button>
+                    <button class="button  dest-card__schedulebtn">Schedule a Trip</button>
                 </article>
 
                 <article class="dest-card dest-card--hv">
@@ -83,7 +82,7 @@
                     </div>
                     <h6 class="dest-card__head">Paris, France</h6>
                     <p class="dest-card__para">Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                    <button class="button dest-card__schedule">Schedule a Trip</button>
+                    <button class="button dest-card__schedulebtn">Schedule a Trip</button>
                 </article>
 
                 <article class="dest-card dest-card--hv">
@@ -92,7 +91,7 @@
                     </div>
                     <h6 class="dest-card__head">Sydney, Australia</h6>
                     <p class="dest-card__para">Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                    <button class="button dest-card__schedule">Schedule a Trip</button>
+                    <button class="button dest-card__schedulebtn">Schedule a Trip</button>
                 </article>
 
                 <article class="dest-card dest-card--hv">
@@ -101,7 +100,7 @@
                     </div>
                     <h6 class="dest-card__head">Greece, Europe</h6>
                     <p class="dest-card__para">Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                    <button class="button dest-card__schedule">Schedule a Trip</button>
+                    <button class="button dest-card__schedulebtn">Schedule a Trip</button>
                 </article>
 
                 <article class="dest-card dest-card--hv">
@@ -110,18 +109,18 @@
                     </div>
                     <h6 class="dest-card__head">Spain, Europe</h6>
                     <p class="dest-card__para">Far far away, behind the word mountains, far from the countries Vokalia..</p>
-                    <button class="button dest-card__schedule">Schedule a Trip</button>
+                    <button class="button dest-card__schedulebtn">Schedule a Trip</button>
                 </article>
 
             </div>
         </div>
     </section>
 
-    <section class="flex-center row--color">
-        <div class="works-flex container">
-            <div class="text__div">
-                <h3 class="text__head">How It Works</h3>
-                <p class="description__para">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam
+    <section class="flex-center  row--color">
+        <div class="hiw-flex  container">
+            <div class="hiw--spacing">
+                <h2 class="sectioned__header">How It Works</h2>
+                <p class="sectioned__info">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam
                     dolor eius.</p>
             </div>
             <div class="guide__items">
@@ -153,40 +152,40 @@
         </div>
     </section>
 
-    <section class="flex-center bg--color">
-        <h1 class="container text__quality">We have high quality services that you will surely love!</h1>
+    <section class="flex-center bg--color  quality__section">
+        <h1 class="container  sectioned__header  sectioned__header--ql">We have high quality services that you will surely love!</h1>
 
     </section>
 
     <section class="flex-center">
         <div class="success-sect container">
-            <h3 class="success__head">Our Success</h3>
-            <p class="description__para">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam
+            <h2 class="sectioned__header">Our Success</h2>
+            <p class="sectioned__info">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam
                 dolor eius.</p>
             <div class="success-wrapper">
-                <span class="success__text">Destination</span>
-                <span class="success__text">Hotels</span>
-                <span class="success__text">Travelers</span>
-                <span class="success__text">Happy Customers</span>
+                <div class="animated-numbers"><span class="success__text">Destination</span></div>
+                <div class="animated-numbers">0<span class="success__text">Hotels</span></div>
+                <div class="animated-numbers"><span class="success__text">Travelers</span></div>
+                <div class="animated-numbers"><span class="success__text">Happy Customers</span></div>
             </div>
         </div>
     </section>
 
     <section class="flex-center row__subscribe--color">
-        <div class="subscribe__move container">
-            <div class="sub__head">
-                <h3 class="subscribe__head">Subscribe</h3>
-                <p class="description__para">Be the first to know about the new templates.</p>
+        <div class="subscribe__section  container">
+            <div class="subscribe__head">
+                <h2 class="sectioned__header">Subscribe</h2>
+                <p class="sectioned__info  sectioned__info--color">Be the first to know about the new templates.</p>
             </div>
-            <div class="sub__move">
-                <input type="text" class="subscribe__input sub__block" placeholder="Your Email">
-                <input type="submit" value="SUBSCRIBE" class="button subscribe__button sub__block">
+            <div class="subscribe__submission">
+                <input type="email" class="subscribe__input subscribe__input--space" placeholder="Your Email">
+                <input type="submit" value="SUBSCRIBE" class="button subscribe__button subscribe__input--space">
             </div>
         </div>
     </section>
 
     <footer class="flex-center">
-        <div class="container flx__footer">
+        <div class="container flex__footer">
             <section class="footer__dev">
                 <article class="about__section">
                     <h6 class="footer__head">About Us</h6>

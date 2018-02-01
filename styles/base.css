@@ -48,48 +48,50 @@ table {
 }
 
 
-/**************************
+/*****************************************************
 
+Base Styles
 
-***************************/
+******************************************************/
 
 body{
-    font-size: 16px;
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
     color: #777;
-    /* text-align: center; */
 }
 
 a {
     text-decoration: none;
 }
 
+
 h1 {
-    font-size: 2em;
+    font-size: 2.4em;
 }
 
 h2 {
-    font-size: 1.8em;
+    font-size: 2.2em;
 }
 
 h3 {
-    font-size: 1.6em;
+    font-size: 2em;
 }
 
 h4 {
-    font-size: 1.4em;
+    font-size: 1.8em;
 }
 
 h5 {
-    font-size: 1.2em
+    font-size: 1.6em
 }
 
 h6 {
-    font-size: 1.1em;
+    font-size: 1.4em;
 }
 
-h1,h2,h3,h4,h5,h6{
+/* h1,h2,h3,h4,h5,h6{
     text-align: center;
-}
+} */
 
 
 *,
@@ -100,31 +102,55 @@ h1,h2,h3,h4,h5,h6{
           box-sizing: border-box;
 }
 
-.display__image{
-    display: block;
-    /* position: relative; */
-    width: 100%;
-    height: auto;
-    background-image:linear-gradient(
-        rgba(0, 0, 0, 0.6),
-        rgba(0, 0, 0, 0.0)
-      ), url("../assets/travel.jpeg");
-    background-size: cover;
-    /* opacity: .8;
-    -webkit-filter: grayscale(40%);
-       -moz-filter: grayscale(40%);
-         -o-filter: grayscale(40%);
-        -ms-filter: grayscale(40%);
-            filter: grayscale(40%); */
+
+.sectioned__header{
+    text-align: center;
+}
+
+.sectioned__info{
+    margin-top: 20px;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    text-align: center;
+}
+.sectioned__info--color{
+    color: rgba(255, 255, 255, 0.5)
 }
 
 
+ 
+/* headers for sections */
 
 
-/* 
+.text__head{
+    font-size: 38px;
+    margin-top: 20px;
+}
+
+.dest__header {
+    margin-bottom: 30px;
+}
+
+.text__quality{
+    padding-top: 300px;
+    padding-bottom: 300px;
+    text-align: center;
+    font-size: 3.5em;
+    line-height: 1.4em;
+    color: white;
+}
+
+.subscribe__head{
+    padding-top: 150px;
+    /* font-size: 3.2em; */
+}
+
+
+/******************************************************
+
 Buttons
 
-*/
+******************************************************/
 
 .button{
     border-radius: 5px;
@@ -137,13 +163,46 @@ Buttons
 }
 
 
+/******************************************************* 
 
-/* 
+                       --------- HEADER --------- 
 
-*/
+ ********************************************************/
+
+.display__image{
+    /* display: block; */
+    /* position: relative; */
+    width: 100%;
+    height: auto;
+    background-image:linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.0)
+      ), url("../assets/travel.jpeg");
+    background-size: cover;
+}
+
+.logo__head{
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.logo{
+    color: white;
+}
+
+.logo__period{
+    color:red;
+}
+
+
+/**********************
+
+----- Navigation 
+
+**********************/
 
 .nav{
-    /* display: block; */
+    display: flex;
     padding-bottom: 30px;
 }
 
@@ -157,23 +216,37 @@ Buttons
     color: white;
 }
 
+/**********************
 
-/* 
-Forms
-*/
+----- Hero Section
+
+**********************/
+
+.leadhead{
+    color: #fff;
+    display: inline-block;
+    font-family: 'Helvetica', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.9em;
+    width: 300px;
+}
+
+
+/**********************
+
+Forms for Hero Section
+
+**********************/
 
 .form__c{
     background-color: #fff;
     width: 33%;
     padding: 20px;
-    /* float: right; */
     border-top: 10px solid #09C6AB;
     margin-bottom: 50px;
     
 }
 
 .form__head{
-    /* padding: 5px 0; */
     margin: 20px 0;
 }
 
@@ -194,89 +267,80 @@ Forms
 }
 
 
+/*********************************
 
 
+Destinations Section
 
-/* 
 
-*/
+*********************************/
 
-.leadhead{
-    color: #fff;
-    display: inline-block;
-    font-family: 'Helvetica', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    line-height: 1.9em;
-    width: 300px;
-    
+.dest-header__info{
+    margin: 80px 0;
 }
 
-
-
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 150px;
-    margin-bottom: 350px;
+.dest-card {
+    width: 320px;
+    margin-bottom: 90px;
+    position: relative;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.08);
 }
 
-
-
-.logo{
-    color: white;
-    margin-top: 75px;
+.dest-card:hover {
+    bottom: 7px;
+    transition: .5 ease-in-out;
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.19);
 }
 
-logo__period{
-    color:blue;
+.dest-card--hv:hover button {
+    background-color: #09C6AB;
 }
 
+.img-contain {
+    height: 250px;
+}
 
-.logo__head{
-    /* margin-top: 20px;
+.dest-card__image {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    -webkit-object-fit: cover;
+    -moz-object-fit: cover;
+    object-fit: cover;
+}
+
+.dest-card__head {
+    margin: 20px 0 20px 0;
+    text-align: center;
+    color: #09C6AB;
+}
+
+.dest-card__para {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.dest-card__schedulebtn {
     display: block;
-    width: 300px; */
-    text-align: left;
-    vertical-align: bottom;
+    margin: 0 auto;
+    padding: 10px;
+    width: 60%;
+    font-size: 16px;
+    margin-bottom: 20px;
+    background-color: #000;
+    color: #fff;
 }
 
-/* 
+/***************************************
 
+How It Works Section
 
-*/
+**************************************/
 
-.text__div{
+.hiw--spacing{
     margin-top: 200px;
 }
-
-.text__head{
-    font-size: 38px;
-    margin-top: 20px;
-}
-
-.description__para{
-    margin-top: 20px;
-    font-size: 1.5em;
-    line-height: 1.2em;
-    text-align: center;
-}
-
-
-.row--color{
-    color: #fff;
-    background-color: #09C6AB;
-    padding-bottom: 100px;
-    text-align: center;
-}
-
-/* .guide {
-    float: left;
-} */
-
-.guide__items{
-    margin-top: 50px;
-}
-
 
 .icon{
     display: table;
@@ -295,83 +359,40 @@ logo__period{
 } 
 
 
+/*************************************** 
 
+Quality Section
 
-/* 
-
-*/
-
-/* .destinations{
-    padding-top: 10px;
-    margin-bottom: 50px;
-
-} */
-
-
-/* 
-
-*/
-
-.text__quality{
-    padding-top: 300px;
-    padding-bottom: 300px;
-    text-align: center;
-    font-size: 3.5em;
-    line-height: 1.4em;
-    color: white;
-}
+***************************************/
 
 .bg--color{
     background: linear-gradient(rgb(125, 125, 125), rgb(90, 125, 125));
 }
 
-
-/* .success__text{
-    display: block;
-    text-align: center;
-    text-transform: uppercase;
-    margin-top: 100px;
-    margin-bottom: 250px;
-} */
-
-
-
-
-/* 
-
-*/
-.topbox{
-    position: fixed;
-    left: 100px;
-    z-index: 1;
+.quality__section{
+    padding: 300px 0;
 }
 
-
-/* 
-
-*/
-
-.row__subscribe--color{
-    background-color: #0098EF;
+.sectioned__header--ql{
     color: white;
 }
 
-.subscribe__head{
-    padding-top: 150px;
-    font-size: 3.2em;
+/*************************************** 
+
+Success Section
+
+***************************************/
+
+.success__text{
+    display: inline-block;
 }
 
 
-.subscribe__button{
-    background-color: #09C6AB;
-    border: none;
-    color: white;
-    width: 300px;
-    /* vertical-align: middle; */
-    padding: 13px 20px 13px 20px;
-    font-size: 1.2em;
-    /* margin-left: 40px; */
-}
+/*******************************************************
+
+Subscribe Section
+
+******************************************************/
 
 .subscribe__input{
     font-size: 1.3em;
@@ -379,24 +400,28 @@ logo__period{
     width: 300px;
     background-color:#0098EF;
     color: white;
-    border: 1px solid rgb(161, 161, 161);
+    border: 1px solid rgba(255, 255, 255, 0.5)
 }
 
 .subscribe__input::placeholder{
     color: white;
 }
 
+.subscribe__button{
+    background-color: #09C6AB;
+    border: none;
+    color: white;
+    width: 300px;
+    padding: 13px 20px 13px 20px;
+    font-size: 1.2em;
+}
 
 
+/*******************************************************
 
+Footer
 
-/* 
-
-
-*/
-
-
-
+******************************************************/
 
 
 .footer__head{
@@ -405,19 +430,15 @@ logo__period{
     margin-bottom: 20px;
 }
 
-
-.social__icons > li {
-    display: inline-block;
+.footer__nav{
+    margin: 0 20px;
 }
 
-
-/* .footer__dev{
-    padding: 100px 0;
-} */
 
 .destination__item,
 .hotel__item,
 .contact__item{
+    line-height: 1.3em;
     padding: 3px;
     color: #09C6AB;
 }
@@ -434,20 +455,21 @@ logo__period{
     text-decoration: underline;
 }
 
+.social__icons > li {
+    display: inline-block;
+}
 
 .copyright{
-    border-top: 1px solid #f2f2f2;
+    border-top: 2px solid #f2f2f2;
     padding: 80px 0;
 }
 
-.footer__nav{
-    margin: 0 10px;
-}
 
-/* 
-JAVASCRIPT USING THESE STYLES
+/****************************************
 
-*/
+JavaScript Hooks
+
+****************************************/
 
 /* 
 Making Modal Box
@@ -510,4 +532,107 @@ Making Modal Box
 .prev-btn{
     left: 150px;
     padding: 30px;
+}
+
+/* .modalImgBox{
+    transition-duration: 2s;
+} */
+
+
+
+
+
+/************************************************************************
+
+MEDIA QUERIES
+
+************************************************************************/
+
+
+@media only screen and (max-width: 800px) {
+
+    /* .mb-close-box{
+        display: none;
+    } */
+
+    body{
+        font-size: 20px;
+    }
+
+    .form__c{
+        width: 100%;
+    }
+    .leadhead{
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .logo{
+        display: inline-block;
+        margin-bottom: 50px;
+    }
+
+    .footer__head{
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .img-full__container{
+        width: 80%;
+    }
+
+    .dest-card {
+        width: 100%;
+    }
+    .dest-card__image {
+        width: 100%;
+    }
+
+    .subscribe__input--space{
+        width: 100%;
+    }
+
+    .copyright{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social__icons{
+        margin-bottom: 40px;
+        order: -1;
+
+    }
+
+    .social__icons li{
+        padding: 0 20px;
+    }
+
+    .social__icons img{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1099px) {
+
+    /* body{
+        font-size: 18px;
+    } */
+
+    .form__c{
+        width: 50%;
+    }
+
+    .logo{
+        display: inline-block;
+        margin-bottom: 50px;
+    }
+
+    .dest-card {
+        width: 45%;
+    }
+    .dest-card__image {
+        width: 100%;
+    }
+
 }
