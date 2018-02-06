@@ -266,6 +266,11 @@ Forms for Hero Section
     background-color: #09C6AB;
 }
 
+.form__onewaytrip{
+    float: right;
+    vertical-align: center;
+}
+
 
 /*********************************
 
@@ -383,6 +388,20 @@ Success Section
 
 ***************************************/
 
+
+
+.success__block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.animated-numbers{
+    color: #09C6AB;
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 50px;
+}
 .success__text{
     display: inline-block;
 }
@@ -474,7 +493,8 @@ JavaScript Hooks
 /* 
 Making Modal Box
  */
-.overlay-wrapper{
+.overlay-wrapper,
+.overlay-wrapper--flight{
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -482,9 +502,16 @@ Making Modal Box
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     /* Enable scroll if needed */
-    overflow: auto; 
+    overflow: hidden; 
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+.overlay-wrapper--flight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img-full__container{
@@ -499,14 +526,26 @@ Making Modal Box
 .img-full{
     width: 100%;
     height: auto;
+    /* overflow: hidden; */
 }
 
-.close-btn{
+.close-btn,
+.close-btn--flight{
     position: absolute;
-    top: 0px;
-    right: -100px;
+    top: 0;
+    right: -80px;
     /* float: right; */
     font-size: 24px;
+    border-radius: 5px;
+    background-color:rgba(215, 215, 215, 0.8);
+    color:rgb(36, 36, 36);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.close-btn--flight{
+    position: fixed;
+    right: 0;
+    top: 0;
 }
 
 .close-btn:hover,
@@ -514,6 +553,8 @@ Making Modal Box
     color: black;
     text-decoration: none;
     cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+
 }
 
 
@@ -521,6 +562,18 @@ Making Modal Box
 .prev-btn{
     position: absolute;
     bottom: 50%;
+    font-size: 1.4em;
+    background-color:rgba(215, 215, 215, 0.8);
+    color:rgb(36, 36, 36);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    /* top: 50px; */
+}
+
+.next-btn:hover,
+.prev-btn:hover{
+   cursor: pointer;
+   color: rgba(255, 255, 255, 0.5);
     /* top: 50px; */
 }
 
@@ -539,7 +592,78 @@ Making Modal Box
 } */
 
 
+.date-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.date-format{
+    font-size: .8em;
+    text-align: center;
+}
+
+
+
+/************************************************************************
+
+Trip MODAL BOX
+
+************************************************************************/
+
+
+
+.flight-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    border-radius: 5px;
+    color: white;
+    border-bottom: 1px solid rgb(233, 231, 231)
+}
+
+.flight-results{
+    /* display: flex;
+    flex-direction: column; */
+    height: 500px;
+    position: relative;
+    /* justify-content: row; */
+    align-items: center;
+    background-color: #09C6AB;
+    width: 70%;
+    /* min-width: 30%; */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.flight-results h1{
+    color: white;
+    text-align: center;
+    min-width: 400px;
+}
+
+.flight__item{
+    margin-bottom: 20px;
+}
+
+.flight-info__book{
+    text-align: center;
+    display: block;
+    font-size: 1.4em;
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(207, 207, 207, 0.8);
+    margin: 0 auto;
+    padding: 10px 40px;
+    box-shadow: 0 1px 2px #949393;
+    cursor: pointer;
+}
+
+.flight-info__book:hover{
+    color: white;
+    background-color: rgba(207, 207, 207, 1)
+}
 
 
 /************************************************************************
@@ -577,8 +701,32 @@ MEDIA QUERIES
         text-align: center;
     }
 
+    .overlay-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .img-full__container{
-        width: 80%;
+        width: 100%;
+    }
+
+    .close-btn{
+        right: 0;
+    }
+
+    .next-btn{
+        bottom: 0;
+        right:0;
+        z-index: 10;
+        width: 50%;
+    }
+
+    .prev-btn{
+        bottom:0;
+        left: 0;
+        z-index: 10;
+        width: 50%;
     }
 
     .dest-card {
@@ -633,6 +781,33 @@ MEDIA QUERIES
     }
     .dest-card__image {
         width: 100%;
+    }
+
+    .overlay-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-full__container{
+        width: 75%;
+    }
+
+    .close-btn{
+        top: 0;
+        right: 0;
+    }
+    .next-btn{
+        right: 22px;
+    }
+
+    .prev-btn{
+        left: 22px;
+    }
+
+    .next-btn,
+    .prev-btn{
+        bottom: initial;
     }
 
 }
