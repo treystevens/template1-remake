@@ -214,9 +214,10 @@ Rows
         flex-wrap: wrap;
     }
 
-    .success__text{
+    .success__block{
         width: 50%;
         text-align: center;
+        margin: 40px 0;
     }
 
     .subscribe__submission{
@@ -268,7 +269,7 @@ Rows
         flex-wrap: wrap;
     }
 
-    .success__text{
+    .success__block{
         width: 50%;
         text-align: center;
     }

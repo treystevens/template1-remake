@@ -1,7 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Image Modal Box
+    function newElement(elem) {
+        return document.createElement(elem);
+    }
+
+    function idGrab(id) {
+        return document.getElementById(id);
+    }
+
+    function multiClassAdd(elems, className){
+        elems.forEach( (elem) =>{
+            return elem.classList.add(className)
+        })
+    }
+    
+    // Modal Box
     const imgView = Array.from(document.querySelectorAll('.flex-card img'));
+    let closeBtn = newElement('button');
+    closeBtn.textContent = "Close";
+    closeBtn.classList.add('close-btn');
 
     imgView.forEach( (img) => {
         img.addEventListener('click', (evt) => {
@@ -11,15 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Create elements for Modal Box
             let modalImgBox = document.querySelector('.js-modalImg div');
-            let overlayWrap = document.createElement('div');
-            let imgContainer = document.createElement('div');
-            let imgTag = document.createElement('img');
-            let closeBtn = document.createElement('button');
-            let leftBtn = document.createElement('button');
-            let rightBtn = document.createElement('button');
+            let overlayWrap = newElement('div');
+            let imgContainer = newElement('div');
+            let imgTag = newElement('img');
+          
+            let leftBtn = newElement('button');
+            let rightBtn = newElement('button');
 
             // Defining button content
-            closeBtn.textContent = "Close";
+           
             rightBtn.innerHTML = "&rarr;";
             leftBtn.innerHTML = "&larr;";
 
@@ -31,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Adding classes to elements
             imgContainer.classList.add('img-full__container');
             overlayWrap.classList.add('overlay-wrapper')
-            closeBtn.classList.add('close-btn');
             rightBtn.classList.add('next-btn');
             leftBtn.classList.add('prev-btn');
 
@@ -86,63 +102,19 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     });
 
-
-    // function animateValue(classes, start, end, duration) {
-    //     // assumes integer values for start and end
-    
-    //     var classArr = Array.from(document.getElementsByClassName(classes));
-    //     console.log(classArr);
-    //     var range = end - start;    // 100
-    //     // no timer shorter than 50ms (not really visible any way)
-    //     var minTimer = 50;
-    //     // calc step time to show all interediate values
-    //     var stepTime = Math.abs(Math.floor(duration / range)); // 2000 / 1000 =  2
-    
-    //     // never go below minTimer
-    //     stepTime = Math.max(stepTime, minTimer); // chooses the highest number which is 50 minTimer
-    //     console.log(stepTime);
-    
-    //     // get current time and calculate desired end time
-    //     var startTime = new Date().getTime(); // this gets current time
-    //     var endTime = startTime + duration; // time you want to end, you add the duration to the current time
-    //     var timer;
-    
-    //     function run() {
-    //         var now = new Date().getTime();
-    //         var remaining = Math.max((endTime - now) / duration, 0);
-    //         var value = Math.round(end - (remaining * range));
-    //         classArr[0].innerHTML = value;
-    //         classArr[1].innerHTML = value;
-    //         if (value == end) {
-    //             clearInterval(timer);
-    //         }
-    //     }
-    
-    //     var timer = setInterval(run, stepTime); // set interval takes a function and milliseconds as its argument.. so every 50 ms it runs that function
-    //     run();
-    // }
-    
-    
-    // animateValue("animated-numbers",  0,  1000,  2000);
-    
-
-    function animateValue(classes, start, end, duration) {
-        // assumes integer values for start and end
+        function animateValue(classes, start, end, duration) {
     
         var classArr = Array.from(document.getElementsByClassName(classes));
         var range = end.map((classEndTimes) => {
             return classEndTimes - start;
         })
         var minTimer = 50;
-        // calc step time to show all interediate values
 
         for( let i = 0; i < classArr.length; i++){
         let stepTime = Math.abs(Math.floor(duration / range[i])); 
-    
         // never go below minTimer
-        stepTime = Math.max(stepTime, minTimer); // chooses the highest number which is 50 minTimer
+        stepTime = Math.max(stepTime, minTimer); 
     
-        // get current time and calculate desired end time
         let startTime = new Date().getTime(); // this gets current time
         let endTime = startTime + duration; // time you want to end, you add the duration to the current time
         var timer;
@@ -150,21 +122,228 @@ document.addEventListener('DOMContentLoaded', () => {
         function run() {
             var now = new Date().getTime();
             var remaining = Math.max((endTime - now) / duration, 0);
-            var value = Math.round(end - (remaining * range));
+            var value = Math.round(end[i] - (remaining * range[i]));
             classArr[i].innerHTML = value;
-            if (value == end) {
+            if (value == end[i]) {
                 clearInterval(timer);
             }
         }
     
         var timer = setInterval(run, stepTime); // set interval takes a function and milliseconds as its argument.. so every 50 ms it runs that function
-        run();
+        run(i);
         }
     }
-    
     
     animateValue("animated-numbers",  0,  [196, 97, 12402, 12202],  2000);
 
 
+// Start of API
+// 
+// 
+// 
+// 
+// 
+
+    const api = 'https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?';
+    const apiKey = config.flightApiKey;
+    const iacaAPI = config.cityNameApiKey;
+    let checkBox = idGrab('oneway-trip');
+    let formSub = idGrab('formsub');
+    let returnDateDiv = idGrab('form__returndate');
+
+
+    // If user wants one way trip hide roundtrip div
+    checkBox.addEventListener('click', (evt) =>{
+        if(checkBox.checked){
+            checkBox.checked = true;
+            returnDateDiv.style.display = 'none';
+        }
+        else{
+            checkBox.checked = false;
+            returnDateDiv.style.display = 'block'
+        }
+        
+    })
+    
+
+    formSub.addEventListener('submit', (evt) => {
+        let flightResultsDiv = newElement('div');
+        let availableFlightList = newElement('ul');
+
+        let submitBtn = idGrab("submit-btn");
+        let buildUrlArr = [];
+        let jsModalBox = document.getElementsByClassName('js-modalBox')
+        let origin;
+        let maxPrice;
+        let tripDestination;
+        let tripDate;
+        let roundTrip
+        let returnDate;
+        let customURL = '';
+        const emptyInput = Array.from(document.getElementsByTagName('input'));
+        evt.preventDefault();
+
+        // Clear array on every submission
+        buildUrlArr.length = 0;
+
+        // Make sure URL Params are not empty or have spaces
+        if (idGrab('origin').value !== '') {
+            origin = 'origin=' + idGrab('origin').value;
+            buildUrlArr.push(origin.trim());
+        }
+        if (idGrab('max_price').value !== '') {
+            maxPrice = '&max_price=' + parseFloat(idGrab('max_price').value.replace(/\$|,/g, ''));
+            buildUrlArr.push(maxPrice.trim());
+        }
+        if (idGrab('trip-destination').value !== '') {
+            tripDestination = '&destination=' + idGrab('trip-destination').value;
+            buildUrlArr.push(tripDestination.trim());
+        }
+        if (idGrab('trip-date').value !== ''){
+            if(idGrab('return-date').value !== ''){
+                roundTrip = '&departure_date=' + idGrab('trip-date').value + '--' + idGrab('return-date').value;
+                buildUrlArr.push(roundTrip);
+            }
+            else{
+                tripDate = '&departure_date=' + idGrab('trip-date').value;
+            buildUrlArr.push(tripDate);
+            }
+        } 
+
+
+        //Clear forms
+        for(var j = 0; j < emptyInput.length; j++){
+            emptyInput[j].value = ""
+        }
+        
+
+        // Build URL for API request
+        for (let i = 0; i < buildUrlArr.length; i++) {
+            customURL += buildUrlArr[i];
+        }
+
+
+        console.log(customURL)
+
+        // Get available flights
+        fetch(api + customURL + apiKey)
+            .then((response) => {
+                response.json()
+                // Returned avaiable flight data from the response
+                .then((data) => {
+                    let flight = data;
+                    let tripResults = flight.results;
+                    let overlayWrap = newElement('div');
+                    let sectionHook = document.querySelector('.hero div');
+
+                    console.log(api+customURL+apiKey)
+                    console.log(flight);
+
+
+                    closeBtn.classList.add('close-btn');
+                    closeBtn.classList.add('close-btn--flight');
+                    flightResultsDiv.classList.add('flight-results');
+                    overlayWrap.classList.add('overlay-wrapper--flight')
+
+                    overlayWrap.appendChild(flightResultsDiv);
+    
+                    sectionHook.insertAdjacentElement('afterbegin', overlayWrap);
+
+                    closeBtn.addEventListener('click', (evt) => {
+                        jsModalBox[0].removeChild(overlayWrap)
+                    })
+            
+                    window.onclick = function (evt) {
+                        if (evt.target == overlayWrap) {
+                            jsModalBox[0].removeChild(overlayWrap);
+                        }
+                    };
+                    // Make list nodes for each city available. Also send to another API for IACA Code -> City Name
+                    tripResults.forEach( (result) => {
+                        let flightDetails = newElement('article');
+                        let outboundFlight = newElement('h1');
+                        let flightPrice = newElement('h3');
+                        let datesContainer = newElement('div');
+                        let flightDates = newElement('p');
+                        let dateFormat = newElement('p');
+                        let bookTrip = newElement('a');
+                        let cityCode = result.destination;
+                        let addClassTo =[outboundFlight, flightPrice, datesContainer]
+
+                        multiClassAdd(addClassTo, 'flight__item');
+                        flightDetails.classList.add('flight-info');
+                        bookTrip.classList.add('flight-info__book');
+                        dateFormat.classList.add('date-format');
+                        datesContainer.classList.add('dates-container');
+                        
+                        
+
+                        dateFormat.textContent = '(year/mm/dd)';
+                        outboundFlight.textContent = `${flight.origin} to ${result.destination}`;
+                        flightPrice.textContent = `$${result.price}`;
+                        flightDates.textContent = `${result.departure_date}`;
+                        dateFormat.textContent = '(yyyy/mm/dd)';
+                        if(roundTrip !== undefined){
+                            flightDates.textContent = `${result.departure_date} -- ${result.return_date}`;
+                        };
+                        bookTrip.textContent = `Book a Trip!`;
+                        
+                        datesContainer.appendChild(flightDates);
+                        datesContainer.appendChild(dateFormat)
+                        flightDetails.appendChild(outboundFlight);
+                        flightDetails.appendChild(flightPrice);
+                        flightDetails.appendChild(datesContainer);
+                        flightDetails.appendChild(bookTrip);
+                        flightResultsDiv.appendChild(closeBtn)
+                        flightResultsDiv.appendChild(flightDetails)
+
+
+                    })
+                })
+            })
+            .catch((err) => {
+                console.log(err, `Something went wrong`);
+            })
+
+            
+
+
+    })
+
+
+    // Below is code to another API. Which takes the IACA Code of cities (NYC, MIA, WAS) and outputs the name of the city instead of the IACA code. Exceeded the limit cannot test further.
+    var myInit = { method: 'GET',
+    mode: 'cors',
+    outboundFlights: {  "Access-Control-Allow-Origin" : "*" },
+    cache: 'default' };
+
+    function getCityName(cityCode) {
+        fetch(iacaAPI + cityCode)
+            .then((response) => {
+                response.json()
+                
+                .then((iaca) => {
+                    let iacaArray = iaca.response
+                    if(iacaArray == undefined){
+                        return;
+                    }
+                    else{
+                        let cityName = iaca.response[0].name
+                        console.log(`im inside the function`)
+                        // let cityName = iaca.response.name
+                        console.log(iacaArray);
+                        console.log(iaca.response[0].name)
+                        return cityName;
+                        
+                    }
+                })
+            })
+            .catch((err) => {
+                console.log(err, 'WHOA! AN ERROR')
+            })
+    }
+
+
 
 });
+
